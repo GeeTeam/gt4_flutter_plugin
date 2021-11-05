@@ -7,4 +7,4 @@ version:
   revision: 3595343e20a61ff16d14e8ecc25f364276bb1b8b
   channel: stable
 
-project_type: plugin
+project_type: app

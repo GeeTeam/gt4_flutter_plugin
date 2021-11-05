@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 
 typedef EventHandler = Function(Map<String, dynamic> event);
 
-class GT4FlutterPlugin {
+class Gt4FlutterPlugin {
   static const String flutterLog = "| Geetest | Flutter | ";
-  static const MethodChannel _channel = MethodChannel('g4_flutter_plugin');
+  static const MethodChannel _channel = MethodChannel('gt4_flutter_plugin');
 
   static String get version {
     return "0.0.1";
@@ -24,6 +24,14 @@ class GT4FlutterPlugin {
   void verifyWithCaptcha(String captchaId) {
     try {
       _channel.invokeMethod('verifyWithCaptcha', {'captchaId': captchaId});
+    } catch (e) {
+      print(flutterLog + e.toString());
+    }
+  }
+
+  void configurationChanged(Object object){
+    try {
+      _channel.invokeMethod('configurationChanged', {'newConfig': object});
     } catch (e) {
       print(flutterLog + e.toString());
     }
