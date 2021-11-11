@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   /// 监控页面配置变化
   static const MethodChannel _demoChannel = MethodChannel('gt4_flutter_demo');
-  final Gt4FlutterPlugin captcha = Gt4FlutterPlugin();
+  final Gt4FlutterPlugin captcha = Gt4FlutterPlugin("647f5ed2ed8acb4be36784e01556bb71");
 
   @override
   void initState() {
@@ -47,27 +47,31 @@ class _MyAppState extends State<MyApp> {
 
       _demoChannel.setMethodCallHandler(_configurationChanged);
 
-      captcha.addEventHandler(onSuccess: (Map<String, dynamic> message) async {
-        debugPrint("Captcha onSuccess: " + message.toString());
+      captcha.addEventHandler(onShow: (Map<String, dynamic> message) async {
+        // TO-DO
+        // 验证视图已展示
+        debugPrint("Captcha did show");
+      }, onResult: (Map<String, dynamic> message) async {
+        debugPrint("Captcha result: " + message.toString());
         Fluttertoast.showToast(
           msg: message.toString(),
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
         );
 
-        bool state = message["state"];
-        if (state == true) {
+        String status = message["status"];
+        if (status == "1") {
           // TODO
           // 发送 message["response"] 中的数据向服务端二次查询接口查询结果
-          Map response = message["response"] as Map;
+          Map response = message["result"] as Map;
           await validateCaptchaResult(response
               .map((key, value) => MapEntry(key.toString(), value.toString())));
         } else {
           // 终端用户完成验证错误，自动重试
-          debugPrint("Captcha 'onSuccess' state: $state");
+          debugPrint("Captcha 'onResult' state: $status");
         }
-      }, onFailure: (Map<String, dynamic> message) async {
-        debugPrint("Captcha onFailure: " + message.toString());
+      }, onError: (Map<String, dynamic> message) async {
+        debugPrint("Captcha onError: " + message.toString());
         Fluttertoast.showToast(
           msg: message.toString(),
           toastLength: Toast.LENGTH_SHORT,
@@ -103,9 +107,9 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void verifyWithCaptcha() async {
+  void verify() async {
     debugPrint("Start captcha. Current version: " + _platformVersion);
-    captcha.verifyWithCaptcha("647f5ed2ed8acb4be36784e01556bb71");
+    captcha.verify();
   }
 
   Future<dynamic> _configurationChanged(MethodCall methodCall) async {
@@ -114,6 +118,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<dynamic> validateCaptchaResult(Map<String, String> result) async {
+    // TODO
+    // Submit captcha result for validation
     debugPrint("Captcha validateCaptchaResult");
     String validate = "Your server url";
     final response = await http.post(Uri.parse(validate),
@@ -157,7 +163,7 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                   ),
-                  onPressed: verifyWithCaptcha,
+                  onPressed: verify,
                   child: const Text('点击验证')),
             ],
           ),
