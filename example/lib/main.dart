@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
         Fluttertoast.showToast(
           msg: message.toString(),
           toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
+          gravity: ToastGravity.BOTTOM,
         );
         String code = message["code"];
         // TODO 处理验证中返回的错误

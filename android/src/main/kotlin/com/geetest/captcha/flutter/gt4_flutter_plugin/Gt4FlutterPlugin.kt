@@ -31,15 +31,15 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            "verifyWithCaptcha" -> {
-                verifyWithCaptcha(activity!!, call.argument<String>("captchaId").toString())
+            "initWithCaptcha" -> {
+                initWithCaptcha(activity!!, call.argument<String>("captchaId").toString())
+            }
+            "verify" -> {
+                verifyWithCaptcha()
             }
             "configurationChanged" -> {
                 configurationChanged(Configuration())
             }
-//            "destroy" -> {
-//                destroy()
-//            }
             "getPlatformVersion" -> {
                 result.success(GTCaptcha4Client.getVersion())
             }
@@ -53,20 +53,39 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         channel.setMethodCallHandler(null)
     }
 
-    private fun verifyWithCaptcha(context: Context, captchaId: String) {
+    private fun initWithCaptcha(context: Context, captchaId: String) {
         gtCaptcha4Client = GTCaptcha4Client.getClient(context)
                 .init(captchaId)
-                .addOnSuccessListener { state, response ->
-                    channel.invokeMethod("onResult", hashMapOf("status" to state, "result" to response))
+    }
+
+    private fun verifyWithCaptcha() {
+        gtCaptcha4Client
+                ?.addOnSuccessListener { status, response ->
+                    val jsonObject: JSONObject
+                    val valueMap = HashMap<String, Any>()
+                    try {
+                        jsonObject = JSONObject(response)
+                        val iterator: Iterator<String> = jsonObject.keys()
+                        var key: String
+                        var value: Any
+                        while (iterator.hasNext()) {
+                            key = iterator.next()
+                            value = jsonObject[key] as Any
+                            valueMap[key] = value
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                    channel.invokeMethod("onResult", hashMapOf("status" to if (status) "1" else "0", "result" to valueMap))
                 }
-                .addOnFailureListener { message ->
+                ?.addOnFailureListener { message ->
                     val jsonObject = JSONObject(message)
                     channel.invokeMethod("onError",
                             hashMapOf("code" to jsonObject.optString("code"),
                                     "msg" to jsonObject.optString("msg"),
                                     "desc" to jsonObject.optJSONObject("desc")?.toString()))
                 }
-                .verifyWithCaptcha()
+                ?.verifyWithCaptcha()
     }
 
     private fun configurationChanged(newConfig: Configuration?) {
