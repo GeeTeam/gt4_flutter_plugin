@@ -57,11 +57,11 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         gtCaptcha4Client = GTCaptcha4Client.getClient(context)
                 .init(captchaId)
                 .addOnSuccessListener { state, response ->
-                    channel.invokeMethod("onSuccess", hashMapOf("state" to state, "response" to response))
+                    channel.invokeMethod("onResult", hashMapOf("status" to state, "result" to response))
                 }
                 .addOnFailureListener { message ->
                     val jsonObject = JSONObject(message)
-                    channel.invokeMethod("onSuccess",
+                    channel.invokeMethod("onError",
                             hashMapOf("code" to jsonObject.optString("code"),
                                     "msg" to jsonObject.optString("msg"),
                                     "desc" to jsonObject.optJSONObject("desc")?.toString()))
