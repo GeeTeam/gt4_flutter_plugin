@@ -1,3 +1,6 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+2021-11-15
+
+* 首次发布
+* 支持 Flutter 2.0
