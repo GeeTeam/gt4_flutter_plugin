@@ -38,6 +38,7 @@ class Gt4FlutterPlugin {
     }
   }
 
+  // 关闭验证
   void close() {
     try {
       _channel.invokeMethod('close');
@@ -45,15 +46,6 @@ class Gt4FlutterPlugin {
       print(flutterLog + e.toString());
     }
   }
-
-  // /// 使用注册参数开启验证
-  // void verifyWithCaptcha(String captchaId) {
-  //   try {
-  //     _channel.invokeMethod('verifyWithCaptcha', {'captchaId': captchaId});
-  //   } catch (e) {
-  //     print(flutterLog + e.toString());
-  //   }
-  // }
 
   void configurationChanged(Object object){
     try {
