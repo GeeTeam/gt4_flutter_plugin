@@ -1,7 +1,7 @@
 name: gt4_flutter_plugin
 description: A new Flutter plugin.
 version: 0.0.1
-homepage: www.geetest.com
+homepage: https://www.geetest.com
 repository: https://github.com/GeeTeam/gt4_flutter_plugin
 
 environment:
