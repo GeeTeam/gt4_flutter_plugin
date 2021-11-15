@@ -23,7 +23,10 @@ class Gt4FlutterPlugin {
 
   Gt4FlutterPlugin(String captchaId, [Map<String, String>? config]) {
     try {
-      _channel.invokeMethod('initWithCaptcha', {'captchaId': captchaId, 'config': config}..removeWhere((key, value) => value == null));
+      _channel.invokeMethod(
+          'initWithCaptcha',
+          {'captchaId': captchaId, 'config': config}
+            ..removeWhere((key, value) => value == null));
     } catch (e) {
       print(flutterLog + e.toString());
     }
@@ -47,7 +50,7 @@ class Gt4FlutterPlugin {
     }
   }
 
-  void configurationChanged(Object object){
+  void configurationChanged(Object object) {
     try {
       _channel.invokeMethod('configurationChanged', {'newConfig': object});
     } catch (e) {

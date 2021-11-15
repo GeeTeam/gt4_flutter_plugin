@@ -23,7 +23,8 @@ class _MyAppState extends State<MyApp> {
 
   /// 监控页面配置变化
   static const MethodChannel _demoChannel = MethodChannel('gt4_flutter_demo');
-  final Gt4FlutterPlugin captcha = Gt4FlutterPlugin("647f5ed2ed8acb4be36784e01556bb71");
+  final Gt4FlutterPlugin captcha =
+      Gt4FlutterPlugin("647f5ed2ed8acb4be36784e01556bb71");
 
   @override
   void initState() {
@@ -44,7 +45,6 @@ class _MyAppState extends State<MyApp> {
     }
 
     try {
-
       _demoChannel.setMethodCallHandler(_configurationChanged);
 
       captcha.addEventHandler(onShow: (Map<String, dynamic> message) async {
@@ -62,9 +62,9 @@ class _MyAppState extends State<MyApp> {
         String status = message["status"];
         if (status == "1") {
           // TODO
-          // 发送 message["response"] 中的数据向服务端二次查询接口查询结果
-          Map response = message["result"] as Map;
-          await validateCaptchaResult(response
+          // 发送 message["result"] 中的数据向服务端二次查询接口查询结果
+          Map result = message["result"] as Map;
+          await validateCaptchaResult(result
               .map((key, value) => MapEntry(key.toString(), value.toString())));
         } else {
           // 终端用户完成验证错误，自动重试
@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
         // TODO 处理验证中返回的错误
         if (Platform.isAndroid) {
           // Android 平台
-          if (code == "-14460	") {
+          if (code == "-14460") {
             // 验证会话已取消
           } else {
             // 更多错误码参考开发文档
@@ -91,6 +91,14 @@ class _MyAppState extends State<MyApp> {
 
         if (Platform.isIOS) {
           // iOS 平台
+          if (code == "-20201") {
+            // 验证请求超时
+          } else if (code == "-20200") {
+            // 验证会话已取消
+          } else {
+            // 更多错误码参考开发文档
+            // https://docs.geetest.com/gt4/apirefer/errorcode/ios
+          }
         }
       });
     } catch (e) {
@@ -107,14 +115,20 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void verify() async {
+  void verify() {
     debugPrint("Start captcha. Current version: " + _platformVersion);
     captcha.verify();
   }
 
+  void close() {
+    debugPrint("Close captcha.");
+    captcha.close();
+  }
+
   Future<dynamic> _configurationChanged(MethodCall methodCall) async {
     debugPrint("Activity configurationChanged");
-    return captcha.configurationChanged(methodCall.arguments.cast<String, dynamic>());
+    return captcha
+        .configurationChanged(methodCall.arguments.cast<String, dynamic>());
   }
 
   Future<dynamic> validateCaptchaResult(Map<String, String> result) async {
