@@ -1,7 +1,8 @@
-# gt3_flutter_plugin
+# gt4_flutter_plugin
 
-The official flutter plugin project for geetest. Support Flutter 2.0.
-极验3.0 Flutter 官方插件。支持 Flutter 2.0。
+The official flutter plugin project for GeeTest BehaviorVerification
+. Support Flutter 2.0.
+行为验 Flutter 官方插件。支持 Flutter 2.0。
 
 [官网/Official](https://www.geetest.com)
 
@@ -15,7 +16,7 @@ The official flutter plugin project for geetest. Support Flutter 2.0.
 
 ```
 dependencies:
-  gt3_flutter_plugin:
+  gt4_flutter_plugin:
     git:
       url: https://github.com/GeeTeam/gt4_flutter_plugin.git
       ref: master
