@@ -18,7 +18,7 @@ A new Flutter plugin.
   s.platform = :ios, '9.0'
 
   # Download SDKs from office website manually and import it to `./Libraries/`
-  s.subspec 'vendor' do |sp|
+  s.subspec 'Vendor' do |sp|
     sp.resources = "Libraries/*.bundle"
     sp.vendored_frameworks = 'Libraries/*.framework'
     sp.frameworks = 'WebKit'
