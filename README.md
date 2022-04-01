@@ -53,7 +53,7 @@ ios/Libraries/*
 
 ### Init
 
-> 集成前，请先替换从后台申请的 `captchaId`（Before initial new instance, replace captchaId with the one of captchaId registered from account backend.）
+> 集成前，请先替换从后台申请的 `captchaId`（Before initial new instance, replace `captchaId` sample with one of the captchaId registered from account backend.）
 
 ```dart
 final Gt4FlutterPlugin captcha = Gt4FlutterPlugin("123456789012345678901234567890ab");
