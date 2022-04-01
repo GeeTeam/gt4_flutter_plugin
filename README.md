@@ -6,8 +6,6 @@ The official flutter plugin project for GeeTest BehaviorVerification
 
 [官网/Official](https://www.geetest.com)
 
-## 开始 / Get started
-
 ## 安装 / Install
 
 在工程 `pubspec.yaml` 中 `dependencies` 块中添加下列配置
@@ -28,7 +26,21 @@ dependencies:
 
 ```
 dependencies:
-  gt4_flutter_plugin: 0.0.1
+  gt4_flutter_plugin: 0.0.2
+```
+
+# 导入 SDK / Import SDK
+
+因为行为验原生 SDK 未提供远程依赖方式获取，需要手动下载和配置。在安装完 Flutter 插件后，需要手动从官网下载 [Android](https://docs.geetest.com/gt4/deploy/client/android#%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%9B%86%E6%88%90) 和 [iOS](https://docs.geetest.com/gt4/deploy/client/ios#%E8%8E%B7%E5%8F%96SDK) 的原生 SDK，并手动导入到相应的本地依赖路径：
+
+> Since GeeTest didn't provide the remote dependency integration for native SDKs of GeeTest, we had to import native SDKs manually. After install flutter plugin, we should download [Android](https://docs.geetest.com/BehaviorVerification/deploy/client/android#Installation) and [iOS](https://docs.geetest.com/BehaviorVerification/deploy/client/ios#Get-SDK) native SDK from office website. And then, import it to follow paths or project manually:
+
+```
+/** Android 主程序的 libs 路径(Android main project libs path) */
+example/android/app/libs
+
+/** iOS Flutter 插件(iOS Flutter plugin path) */
+ios/Libraries/*
 ```
 
 ## 配置 / Configuration
@@ -40,6 +52,8 @@ dependencies:
 ## 示例 / Example
 
 ### Init
+
+> 集成前，请先替换从后台申请的 `captchaId`（Before initial new instance, replace captchaId with the one of captchaId registered from account backend.）
 
 ```dart
 final Gt4FlutterPlugin captcha = Gt4FlutterPlugin("123456789012345678901234567890ab");

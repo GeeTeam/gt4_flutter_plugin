@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/flutter,xcode,androidstudio,visualstudiocode,android
 # Edit at https://www.toptal.com/developers/gitignore?templates=flutter,xcode,androidstudio,visualstudiocode,android
 
+### iOS ###
+ios/Libraries/
+
 ### Android ###
 # Built application files
 *.apk
