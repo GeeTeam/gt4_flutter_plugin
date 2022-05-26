@@ -13,10 +13,10 @@ class GT4SessionConfiguration {
   // 远程访问静态资源时的协议，默认 @“https”。
   String? protocol;
 
-  // 界面样式，4个枚举值，默认 `GTC4UserInterfaceStyleLight`
+  // 界面样式，3个枚举值，默认 `light`
   GTC4UserInterfaceStyle? userInterfaceStyle;
 
-  // 界面的展示方式，4个枚举值，默认 `GTC4DisplayStyleCenter`
+  // 界面的展示方式，2个枚举值，默认 `center`
   GTC4DisplayStyle? displayStyle;
 
   // 背景颜色，默认透明
@@ -28,7 +28,7 @@ class GT4SessionConfiguration {
   // 点击背景的交互，默认开启。
   bool? canceledOnTouchOutside;
 
-  // 单位为秒，ios 默认 8000，安卓 10000
+  // 单位为毫秒，ios 默认 8000，安卓 10000
   int? timeout;
 
   /*
@@ -39,7 +39,7 @@ class GT4SessionConfiguration {
   String? language;
 
   // 额外的参数, 默认为空。参数将被组装后提交到验证服务。
-  Map<String,String>? additionalParameter;
+  Map<String,dynamic>? additionalParameter;
 
 
   Map<String, dynamic> toMap() {
@@ -51,6 +51,7 @@ class GT4SessionConfiguration {
       "backgroundColor": backgroundColor?.value.toRadixString(16),
       "debugEnable": debugEnable,
       "canceledOnTouchOutside": canceledOnTouchOutside,
+      "timeout": timeout,
       "language": language,
       "additionalParameter": additionalParameter
     }..removeWhere((key, value) => value == null);

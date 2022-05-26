@@ -66,6 +66,9 @@
         if (params[@"canceledOnTouchOutside"] && [params[@"canceledOnTouchOutside"] boolValue]) {
             config.backgroundUserInteractionEnable = [params[@"canceledOnTouchOutside"] boolValue];
         }
+        if (params[@"timeout"] && [params[@"timeout"] integerValue]) {
+            config.timeout = [params[@"timeout"] integerValue] / 1000;
+        }
         if (params[@"language"]) {
             config.language = params[@"language"];
         }
