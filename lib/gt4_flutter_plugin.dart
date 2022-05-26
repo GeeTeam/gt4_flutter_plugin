@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-
+import 'package:gt4_flutter_plugin/gt4_session_configuration.dart';
 typedef EventHandler = Function(Map<String, dynamic> event);
 
 class Gt4FlutterPlugin {
@@ -21,11 +21,11 @@ class Gt4FlutterPlugin {
   EventHandler? _onResult;
   EventHandler? _onError;
 
-  Gt4FlutterPlugin(String captchaId, [Map<String, String>? config]) {
+  Gt4FlutterPlugin(String captchaId, [GT4SessionConfiguration? config]) {
     try {
       _channel.invokeMethod(
           'initWithCaptcha',
-          {'captchaId': captchaId, 'config': config}
+          {'captchaId': captchaId, 'config': config?.toMap()}
             ..removeWhere((key, value) => value == null));
     } catch (e) {
       print(flutterLog + e.toString());

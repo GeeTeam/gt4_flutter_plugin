@@ -38,10 +38,77 @@
     NSString *captchaID = args[@"captchaId"];
     NSDictionary *params = args[@"config"];
 
-    GTCaptcha4SessionConfiguration *config = [GTCaptcha4SessionConfiguration defaultConfiguration];
-    config.additionalParameter = [params mutableCopy];
-    self.captchaSession = [GTCaptcha4Session sessionWithCaptchaID:captchaID configuration:config];
+    self.captchaSession = [GTCaptcha4Session sessionWithCaptchaID:captchaID configuration:[self parseConfig:params]];
     self.captchaSession.delegate = self;
+}
+
+- (GTCaptcha4SessionConfiguration *)parseConfig:(NSDictionary *)params {
+    GTCaptcha4SessionConfiguration *config = [GTCaptcha4SessionConfiguration defaultConfiguration];
+    if (params != nil) {
+        if (params[@"resourcePath"]) {
+            config.resourcePath = params[@"resourcePath"];
+        }
+        if (params[@"protocol"]) {
+            config.protocol = params[@"protocol"];
+        }
+        if (params[@"userInterfaceStyle"] && [params[@"userInterfaceStyle"] integerValue]) {
+            config.userInterfaceStyle = [params[@"userInterfaceStyle"] integerValue];
+        }
+        if (params[@"displayStyle"] && [params[@"displayStyle"] integerValue]) {
+            config.displayStyle = [params[@"displayStyle"] integerValue];
+        }
+        if (params[@"backgroundColor"]) {
+            config.backgroundColor = [self colorWithHex:params[@"backgroundColor"]];
+        }
+        if (params[@"debugEnable"] && [params[@"debugEnable"] boolValue]) {
+            config.debugEnable = [params[@"debugEnable"] boolValue];
+        }
+        if (params[@"canceledOnTouchOutside"] && [params[@"canceledOnTouchOutside"] boolValue]) {
+            config.backgroundUserInteractionEnable = [params[@"canceledOnTouchOutside"] boolValue];
+        }
+        if (params[@"language"]) {
+            config.language = params[@"language"];
+        }
+        if (params[@"additionalParameter"] && [params[@"additionalParameter"] isKindOfClass:[NSDictionary class]]) {
+            config.additionalParameter = params[@"additionalParameter"];
+        }
+    }
+    return config;
+}
+
+- (UIColor *)colorWithHex:(NSString *)cString {
+    NSString *hexString = [cString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // strip 0X if it appears
+    if ([hexString hasPrefix:@"0X"])
+        hexString = [hexString substringFromIndex:2];
+    if ([hexString hasPrefix:@"#"])
+        hexString = [hexString substringFromIndex:1];
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    unsigned int color = 0;
+    [scanner scanHexInt:&color];
+    uint32_t a = 0,r = 0,g = 0,b = 0;
+    switch (cString.length) {
+        case 3:
+            a = 255;
+            r = (color >> 8) * 17;
+            g = (color >> 4 & 0xF) * 17;
+            b = (color & 0xF) * 17;
+            break;
+        case 6:
+            a = 255;
+            r = color >> 16;
+            g = color >> 8 & 0xFF;
+            b = color & 0xFF;
+        case 8:
+            a = color >> 24;
+            r = color >> 16 & 0xFF;
+            g = color >> 8 & 0xFF;
+            b = color & 0xFF;
+            break;
+        default:
+            break;
+    }
+    return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:((float) a / 255.0f)];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
