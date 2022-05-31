@@ -56,26 +56,26 @@ ios/Libraries/*
 > 集成前，请先替换从后台申请的 `captchaId`（Before initial new instance, replace `captchaId` sample with one of the captchaId registered from account backend.）
 
 ```dart
-var confige = GT4SessionConfiguration();
-    confige.language = "en";
-    confige.debugEnable = true;
-    confige.backgroundColor = Colors.orange;
+var config = GT4SessionConfiguration();
+    config.language = "en";
+    config.debugEnable = true;
+    config.backgroundColor = Colors.orange;
     captcha =
-        Gt4FlutterPlugin("647f5ed2ed8acb4be36784e01556bb71",confige);
+        Gt4FlutterPlugin("647f5ed2ed8acb4be36784e01556bb71",config);
 ```
 
-confige 说明
+config 说明
 
 属性|属性类型|属性说明
 -----|-----|------
-resourcePath | String | 静态资源文件的路径, 默认为空<br>如果为远程文件，则应为完整路径<br>如果为本地文件，则应为文件所在路径（不包含文件）
+resourcePath | String | 静态资源文件的路径, 默认加载本地文件路径<br>无特殊需求，无需配置<br>可配置远程文件，应设置完整路径
 protocol | String | 远程访问静态资源时的协议，默认 `https`
-userInterfaceStyle | GTC4UserInterfaceStyle | 界面样式,枚举<br>`system` 跟随系统样式<br>`light`普通样式<br>`dark`暗黑样式<br> 默认 `light`
+userInterfaceStyle | GTC4UserInterfaceStyle | 界面样式,枚举<br>`system` 跟随系统样式<br>`light`普通样式<br>`dark`暗黑样式<br> iOS默认 `light`，Android默认`system`
 displayStyle | GTC4DisplayStyle |界面的展示方式，枚举<br> `center`居中展示<br>`bottom`底部展示<br>默认 `center`
 backgroundColor| Color | 背景颜色，默认透明
 debugEnable | bool | 调试模式开关，默认关闭
 canceledOnTouchOutside | bool | 点击背景的交互，默认开启
-timeout | int | 单位为毫秒，iOS 默认`8000 `，安卓 `10000`
+timeout | int | 单位为毫秒，iOS 默认`8000 `，Android `10000`
 language | String | 语言，默认跟随系统<br> 如果系统为不支持的语言，则为中文简体<br>指定语言请参考文档中的语言短码清单（ISO 639-2 标准）
 additionalParameter | Map<String,dynamic> | 额外的参数, 默认为空。参数将被组装后提交到验证服务
 
