@@ -16,9 +16,6 @@ class GT4SessionConfiguration {
   // 界面样式，3个枚举值，默认 `light`
   GTC4UserInterfaceStyle? userInterfaceStyle;
 
-  // 界面的展示方式，2个枚举值，默认 `center`
-  GTC4DisplayStyle? displayStyle;
-
   // 背景颜色，默认透明
   Color? backgroundColor;
 
@@ -47,7 +44,6 @@ class GT4SessionConfiguration {
       "resourcePath": resourcePath,
       "protocol": protocol,
       "userInterfaceStyle": userInterfaceStyle?.index,
-      "displayStyle": displayStyle?.index,
       "backgroundColor": backgroundColor?.value.toRadixString(16),
       "debugEnable": debugEnable,
       "canceledOnTouchOutside": canceledOnTouchOutside,

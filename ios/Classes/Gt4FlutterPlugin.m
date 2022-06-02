@@ -54,9 +54,6 @@
         if (params[@"userInterfaceStyle"] && [params[@"userInterfaceStyle"] integerValue]) {
             config.userInterfaceStyle = [params[@"userInterfaceStyle"] integerValue];
         }
-        if (params[@"displayStyle"] && [params[@"displayStyle"] integerValue]) {
-            config.displayStyle = [params[@"displayStyle"] integerValue];
-        }
         if (params[@"backgroundColor"]) {
             config.backgroundColor = [self colorWithHex:params[@"backgroundColor"]];
         }
