@@ -43,6 +43,32 @@ example/android/app/libs
 ios/Libraries/*
 ```
 
+Android 导入原生 SDK 后，需要添加依赖，下面两种依赖方式选择一种即可(在 example/android/app/build.gradle 文件中配置)。
+
+> After imports the Android native SDK, you need to add dependencies. Choose one of the following ways to add dependencies(config in the example/android/app/build.gradle file).
+
+```
+/** 标准依赖方式(Standard way to add dependencies) */
+android {
+    
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    
+}
+
+dependencies {
+    implementation(name: 'geetest_captcha_android_vx.y.z_date', ext: 'aar')
+}
+
+/** 示例代码中的依赖方式(Another way to add dependencies in example code) */
+dependencies {
+    implementation fileTree(include: ['*.aar'], dir: 'libs/')
+}
+```
+
 ## 配置 / Configuration
 
 请在 [官网](https://www.geetest.com) 申请验证 ID（captchaId）和 Key，并部署配套的后端接口。详细介绍请查阅：[部署说明](https://docs.geetest.com/gt4/start/)
