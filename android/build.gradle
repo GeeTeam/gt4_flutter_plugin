@@ -47,5 +47,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    compileOnly "com.geetest.captcha:captcha:1.5.1"
+    implementation files('libs/geetest_captcha_android_v1.7.5_20220526.aar')
 }
