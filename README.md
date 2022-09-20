@@ -43,6 +43,9 @@ example/android/app/libs
 ios/Libraries/*
 ```
 
+iOS 在插件对应路径导入SDK后，还需要在 Xcode 原生项目中导入资源文件`GTCaptcha4.bundle`, 否则集成后会报资源找不到的错误
+> iOS needs to import the resource file `GTCaptcha4.bundle` in the Xcode native project after importing the SDK into the corresponding path of the plugin, otherwise it will report an error that the resource cannot be found after integration
+
 Android 导入原生 SDK 后，需要添加依赖，下面两种依赖方式选择一种即可(在 example/android/app/build.gradle 文件中配置)。
 
 > After imports the Android native SDK, you need to add dependencies. Choose one of the following ways to add dependencies(config in the example/android/app/build.gradle file).
