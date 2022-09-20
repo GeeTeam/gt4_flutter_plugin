@@ -36,41 +36,18 @@ dependencies:
 > Since GeeTest didn't provide the remote dependency integration for native SDKs currently, it means you need to download and configure it manually. After installing the flutter plugin, please  download the native [Android](https://docs.geetest.com/BehaviorVerification/deploy/client/android#Installation) and [iOS](https://docs.geetest.com/BehaviorVerification/deploy/client/ios#Get-SDK) SDK from from [GeeTest dashboard](https://auth.geetest.com/login). And then,  import it to following paths:
 
 ```
-/** Android 主程序的 libs 路径(Android main project libs path) */
-example/android/app/libs
+/** Android Flutter 插件(Android Flutter plugin path) */
+android/libs
 
 /** iOS Flutter 插件(iOS Flutter plugin path) */
-ios/Libraries/*
+ios/Libraries
 ```
+**注：使用`pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到本插件，上述插件路径即为此处。**
+> Note: The plug-in can be found in `Project>External Libraries>Flutter Plugins` after successful download using `pub get` command. The plugin path above is here.
 
 iOS 在插件对应路径导入SDK后，还需要在 Xcode 原生项目中导入资源文件`GTCaptcha4.bundle`, 否则集成后会报资源找不到的错误
 > iOS needs to import the resource file `GTCaptcha4.bundle` in the Xcode native project after importing the SDK into the corresponding path of the plugin, otherwise it will report an error that the resource cannot be found after integration
 
-Android 导入原生 SDK 后，需要添加依赖，下面两种依赖方式选择一种即可(在 example/android/app/build.gradle 文件中配置)。
-
-> After imports the Android native SDK, you need to add dependencies. Choose one of the following ways to add dependencies(config in the example/android/app/build.gradle file).
-
-```
-/** 标准依赖方式(Standard way to add dependencies) */
-android {
-    
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-    
-}
-
-dependencies {
-    implementation(name: 'geetest_captcha_android_vx.y.z_date', ext: 'aar')
-}
-
-/** 示例代码中的依赖方式(Another way to add dependencies in example code) */
-dependencies {
-    implementation fileTree(include: ['*.aar'], dir: 'libs/')
-}
-```
 
 ## 配置 / Configuration
 
