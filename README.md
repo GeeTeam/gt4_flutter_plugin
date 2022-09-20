@@ -37,10 +37,10 @@ dependencies:
 
 ```
 /** Android Flutter 插件(Android Flutter plugin path) */
-android/libs
+android/libs/*
 
 /** iOS Flutter 插件(iOS Flutter plugin path) */
-ios/Libraries
+ios/Librarie/*
 ```
 **注：使用`pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到本插件，上述插件路径即为此处。**
 > Note: The plug-in can be found in `Project>External Libraries>Flutter Plugins` after successful download using `pub get` command. The plugin path above is here.
