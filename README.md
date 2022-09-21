@@ -43,11 +43,13 @@ android/libs/*
 ios/Librarie/*
 ```
 **注：使用`pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到本插件，上述插件路径即为此处。**
-> Note: The plug-in can be found in `Project>External Libraries>Flutter Plugins` after successful download using `pub get` command. The plugin path above is here.
+> Note: The plugin can be found in `Project>External Libraries>Flutter Plugins` after successful download using `pub get` command. The plugin path above is here.
 
 iOS 在插件对应路径导入SDK后，还需要在 Xcode 原生项目中导入资源文件`GTCaptcha4.bundle`, 否则集成后会报资源找不到的错误
 > iOS needs to import the resource file `GTCaptcha4.bundle` in the Xcode native project after importing the SDK into the corresponding path of the plugin, otherwise it will report an error that the resource cannot be found after integration
 
+Android 在插件对应路径导入SDK后，还需要在插件的 `android/build.gradle` 文件中 `dependencies` 标签内添加 `api(name:'geetest_captcha_android_vx.y.z_date', ext:'aar')`
+> Android needs to add `api(name:'geetest_captcha_android_vx.y.z_date', ext:'aar')` inside the `dependencies` label in `android/build.gradle` file of the plugin after importing the SDK into the corresponding path of the plugin.
 
 ## 配置 / Configuration
 
