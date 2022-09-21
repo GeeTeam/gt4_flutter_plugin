@@ -26,7 +26,7 @@ dependencies:
 
 ```
 dependencies:
-  gt4_flutter_plugin: 0.0.4
+  gt4_flutter_plugin: 0.0.5
 ```
 
 # 导入 SDK / Import SDK
