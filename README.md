@@ -12,7 +12,7 @@ Follow the steps below to set up dependencies in project pubspec.yaml
 
 **Github 集成** / **Github integration**
 
-```
+```yaml
 dependencies:
   gt4_flutter_plugin:
     git:
@@ -24,29 +24,34 @@ dependencies:
 
 **pub 集成** / pub integration
 
-```
+```yaml
 dependencies:
   gt4_flutter_plugin: 0.0.5
 ```
 
 # 导入 SDK / Import SDK
 
+**注意：请将 SDK 导入到极验行为验 Flutter 插件的对应目录下，而非您项目的目录下**
+
+**Please be advised: Import GeeTest CAPTCHA SDK to the according paths of GeeTest CAPTCHA Flutter plugin, other than your project's.**
+
 因为行为验原生 SDK 未提供远程依赖方式获取，需要手动下载和配置。在安装完 Flutter 插件后，需要手动从官网下载 [Android](https://docs.geetest.com/gt4/deploy/client/android#%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%9B%86%E6%88%90) 和 [iOS](https://docs.geetest.com/gt4/deploy/client/ios#%E8%8E%B7%E5%8F%96SDK) 的原生 SDK，并手动导入到相应的本地依赖路径：
 
-> Since GeeTest didn't provide the remote dependency integration for native SDKs currently, it means you need to download and configure it manually. After installing the flutter plugin, please  download the native [Android](https://docs.geetest.com/BehaviorVerification/deploy/client/android#Installation) and [iOS](https://docs.geetest.com/BehaviorVerification/deploy/client/ios#Get-SDK) SDK from from [GeeTest dashboard](https://auth.geetest.com/login). And then,  import it to following paths:
+> Since GeeTest does not provide remote dependency integration methods for native SDKs currently, you will need to download and configure it manually. After installing the flutter plugin, please download the native [Android](https://docs.geetest.com/BehaviorVerification/deploy/client/android#Installation) and [iOS](https://docs.geetest.com/BehaviorVerification/deploy/client/ios#Get-SDK) SDK from from [GeeTest dashboard](https://auth.geetest.com/login). And then, import it to following paths:
 
-```
+```plaintext
 /** Android Flutter 插件(Android Flutter plugin path) */
 android/libs/*
 
 /** iOS Flutter 插件(iOS Flutter plugin path) */
 ios/Librarie/*
 ```
-**注：使用`pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到本插件，上述插件路径即为此处。**
-> Note: The plugin can be found in `Project>External Libraries>Flutter Plugins` after successful download using `pub get` command. The plugin path above is here.
+
+**注：使用`flutter pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到极验行为验 Flutter 插件的对应路径，上述插件路径即为此处。**
+> Note: The path of GeeTest CAPTCHA Flutter plugin can be found in `Project>External Libraries>Flutter Plugins` after successful download using `flutter pub get` command. The plugin path above is here.
 
 iOS 在插件对应路径导入SDK后，还需要在 Xcode 原生项目中导入资源文件`GTCaptcha4.bundle`, 否则集成后会报资源找不到的错误
-> iOS needs to import the resource file `GTCaptcha4.bundle` in the Xcode native project after importing the SDK into the corresponding path of the plugin, otherwise it will report an error that the resource cannot be found after integration
+> If developing for iOS, you will need to import the resource file `GTCaptcha4.bundle` in the Xcode native project after importing the SDK into the corresponding path of the plugin, otherwise it will report an error that the resource cannot be found after integration
 
 Android 在插件对应路径导入SDK后，还需要在插件的 `android/build.gradle` 文件中 `dependencies` 标签内添加 `api(name:'geetest_captcha_android_vx.y.z_date', ext:'aar')`
 > Android needs to add `api(name:'geetest_captcha_android_vx.y.z_date', ext:'aar')` inside the `dependencies` label in `android/build.gradle` file of the plugin after importing the SDK into the corresponding path of the plugin.
@@ -55,7 +60,7 @@ Android 在插件对应路径导入SDK后，还需要在插件的 `android/build
 
 请在 [官网](https://www.geetest.com) 申请验证 ID（captchaId）和 Key，并部署配套的后端接口。详细介绍请查阅：[部署说明](https://docs.geetest.com/gt4/start/)
 
-Create your IDs and keys (GeeTest CAPTCHA V4) on [GeeTest dashboard](https://auth.geetest.com/login), and deploy the corresponding back-end API based on [GeeTest documents](https://docs.geetest.com/BehaviorVerification/overview/start/). 
+Create your IDs and keys (GeeTest CAPTCHA V4) on [GeeTest dashboard](https://auth.geetest.com/login), and deploy the corresponding back-end API based on [GeeTest documents](https://docs.geetest.com/BehaviorVerification/overview/start/).
 
 ## 示例 / Example
 
@@ -82,13 +87,9 @@ userInterfaceStyle | GTC4UserInterfaceStyle | 界面样式,枚举 / Interface st
 backgroundColor| Color | 背景颜色，默认透明 <br> it is used for set background color, the default value is transparency.
 debugEnable | bool | 调试模式开关，默认关闭 <br> Debugging mode switch, the default value is turn off
 canceledOnTouchOutside | bool | 点击背景的交互，默认开启 <br> It is used for interaction of background clicking, the default value is on.
-timeout | int | 请求超时时长，单位为毫秒，iOS 默认`8000 `，Android `10000`<br> Request timeout duration. The unit is milliseconds. The default value is `8000` for iOS and `10000` for Android
+timeout | int | 请求超时时长，单位为毫秒，iOS 默认`8000`，Android `10000`<br> Request timeout duration. The unit is milliseconds. The default value is `8000` for iOS and `10000` for Android
 language | String | 语言，默认跟随系统<br> 如果系统为不支持的语言，则为中文简体<br>指定语言请参考文档中的语言短码清单（ISO 639-2 标准）<br>It is used for language setting, the default value is the same as system language. <br>The default language will be Chinese if your system language is not included in GeeTest multilingual setting. <br>Refer to the list of language short codes in the documentation (ISO 639-2) to specify the language.
 additionalParameter | Map<String,dynamic> | 额外的参数, 默认为空。参数将被组装后提交到验证服务 <br> Additional parameters, null by default. The parameters will be assembled and submitted to the verification service.
-
-  
-  
-
 
 ### Verify
 
