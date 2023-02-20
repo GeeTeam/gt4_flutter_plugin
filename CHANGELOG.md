@@ -1,3 +1,10 @@
+## 0.0.6
+2023-02-20
+* Add `logEnable` config
+* Bump plugin Android target to 33
+* Fix flutter analyze issues
+* Update several dependencies
+
 ## 0.0.5
 2022-09-21
 * 更新 README

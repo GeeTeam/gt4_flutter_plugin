@@ -26,7 +26,7 @@ dependencies:
 
 ```yaml
 dependencies:
-  gt4_flutter_plugin: 0.0.5
+  gt4_flutter_plugin: ^0.0.6
 ```
 
 # 导入 SDK / Import SDK
