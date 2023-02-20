@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:gt4_flutter_plugin/gt4_session_configuration.dart';
+
 typedef EventHandler = Function(Map<String, dynamic> event);
 
 class Gt4FlutterPlugin {

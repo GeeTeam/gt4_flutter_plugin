@@ -39,8 +39,7 @@ class GT4SessionConfiguration {
   String? language;
 
   // 额外的参数, 默认为空。参数将被组装后提交到验证服务。
-  Map<String,dynamic>? additionalParameter;
-
+  Map<String, dynamic>? additionalParameter;
 
   Map<String, dynamic> toMap() {
     return {
