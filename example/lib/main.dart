@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         // 验证视图已展示
         debugPrint("Captcha did show");
       }, onResult: (Map<String, dynamic> message) async {
-        debugPrint("Captcha result: " + message.toString());
+        debugPrint("Captcha result: $message");
         Fluttertoast.showToast(
           msg: message.toString(),
           toastLength: Toast.LENGTH_SHORT,
@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
           debugPrint("Captcha 'onResult' state: $status");
         }
       }, onError: (Map<String, dynamic> message) async {
-        debugPrint("Captcha onError: " + message.toString());
+        debugPrint("Captcha onError: $message");
         Fluttertoast.showToast(
           msg: message.toString(),
           toastLength: Toast.LENGTH_SHORT,
@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
         }
       });
     } catch (e) {
-      debugPrint("Event handler exception " + e.toString());
+      debugPrint("Event handler exception $e");
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -124,7 +124,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void verify() {
-    debugPrint("Start captcha. Current version: " + _platformVersion);
+    debugPrint("Start captcha. Current version: $_platformVersion");
     captcha.verify();
   }
 
@@ -150,7 +150,7 @@ class _MyAppState extends State<MyApp> {
         },
         body: result);
     if (response.statusCode == 200) {
-      debugPrint("Validate response: " + response.body);
+      debugPrint("Validate response: ${response.body}");
     } else {
       debugPrint("URL: $validate, Response statusCode: ${response.statusCode}");
     }

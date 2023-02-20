@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:gt4_flutter_plugin/gt4_session_configuration.dart';
 typedef EventHandler = Function(Map<String, dynamic> event);
@@ -28,7 +29,7 @@ class Gt4FlutterPlugin {
           {'captchaId': captchaId, 'config': config?.toMap()}
             ..removeWhere((key, value) => value == null));
     } catch (e) {
-      print(flutterLog + e.toString());
+      debugPrint(flutterLog + e.toString());
     }
   }
 
@@ -37,7 +38,7 @@ class Gt4FlutterPlugin {
     try {
       _channel.invokeMethod('verify');
     } catch (e) {
-      print(flutterLog + e.toString());
+      debugPrint(flutterLog + e.toString());
     }
   }
 
@@ -46,7 +47,7 @@ class Gt4FlutterPlugin {
     try {
       _channel.invokeMethod('close');
     } catch (e) {
-      print(flutterLog + e.toString());
+      debugPrint(flutterLog + e.toString());
     }
   }
 
@@ -54,7 +55,7 @@ class Gt4FlutterPlugin {
     try {
       _channel.invokeMethod('configurationChanged', {'newConfig': object});
     } catch (e) {
-      print(flutterLog + e.toString());
+      debugPrint(flutterLog + e.toString());
     }
   }
 
@@ -84,7 +85,7 @@ class Gt4FlutterPlugin {
     ///
     EventHandler? onShow,
   }) {
-    print(flutterLog + "addEventHandler");
+    debugPrint("${flutterLog}addEventHandler");
 
     _onShow = onShow;
     _onResult = onResult;
@@ -96,16 +97,16 @@ class Gt4FlutterPlugin {
   Future<dynamic> _handler(MethodCall methodCall) async {
     switch (methodCall.method) {
       case "onShow":
-        print(flutterLog + "onShow:" + _onShow.toString());
+        debugPrint("${flutterLog}onShow:$_onShow");
         return _onShow!(methodCall.arguments.cast<String, dynamic>());
       case "onResult":
-        print(flutterLog + "onResult:" + _onResult.toString());
+        debugPrint("${flutterLog}onResult:$_onResult");
         return _onResult!(methodCall.arguments.cast<String, dynamic>());
       case "onError":
-        print(flutterLog + "onError:" + _onError.toString());
+        debugPrint("${flutterLog}onError:$_onError");
         return _onError!(methodCall.arguments.cast<String, dynamic>());
       default:
-        throw UnsupportedError(flutterLog + "Unrecognized Event");
+        throw UnsupportedError("${flutterLog}Unrecognized Event");
     }
   }
 }
