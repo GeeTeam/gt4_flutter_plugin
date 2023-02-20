@@ -22,6 +22,9 @@ class GT4SessionConfiguration {
   // 调试模式开关，默认关闭
   bool? debugEnable;
 
+  // 日志开关, 仅对 Android 生效
+  bool? logEnable;
+
   // 点击背景的交互，默认开启。
   bool? canceledOnTouchOutside;
 
@@ -46,6 +49,7 @@ class GT4SessionConfiguration {
       "userInterfaceStyle": userInterfaceStyle?.index,
       "backgroundColor": backgroundColor?.value.toRadixString(16),
       "debugEnable": debugEnable,
+      "logEnable": logEnable,
       "canceledOnTouchOutside": canceledOnTouchOutside,
       "timeout": timeout,
       "language": language,

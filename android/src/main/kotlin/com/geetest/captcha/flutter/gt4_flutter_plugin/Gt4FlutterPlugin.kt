@@ -3,7 +3,6 @@ package com.geetest.captcha.flutter.gt4_flutter_plugin
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.util.Log
 import androidx.annotation.NonNull
 import com.geetest.captcha.GTCaptcha4Client
 import com.geetest.captcha.GTCaptcha4Config
@@ -33,7 +32,6 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        Log.i(tag, "receive method: " + call.method)
         when (call.method) {
             "initWithCaptcha" -> {
                 initWithCaptcha(activity!!, call.arguments)
@@ -59,10 +57,10 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private fun initWithCaptcha(context: Context, param: Any?) {
         if (param !is Map<*, *>) {
-            Log.e(tag, "initWithCaptcha arguments is not Map")
             return
         }
-        Log.i(tag, "parma:$param")
+
+        gtCaptcha4Client = GTCaptcha4Client.getClient(context)
 
         if (param.containsKey("config")) {
             val configBuilder = GTCaptcha4Config.Builder()
@@ -84,10 +82,12 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 } else {
                     hashMap["bgColor"] = String.format("#FF%s", backgroundColorStr)
                 }
-                Log.i(tag, "bgColor:" + hashMap["bgColor"])
             }
             if (configParams.containsKey("debugEnable")) {
                 configBuilder.setDebug(configParams["debugEnable"] as Boolean)
+            }
+            if (configParams.containsKey("logEnable")) {
+                gtCaptcha4Client?.setLogEnable(configParams["logEnable"] as Boolean)
             }
             if (configParams.containsKey("canceledOnTouchOutside")) {
                 configBuilder.setCanceledOnTouchOutside(configParams["canceledOnTouchOutside"] as Boolean)
@@ -99,16 +99,16 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 configBuilder.setLanguage(configParams["language"] as String)
             }
             if (configParams.containsKey("additionalParameter")) {
-                val additionalParameter: Map<String, Any> = configParams["additionalParameter"] as Map<String, Any>
-                additionalParameter.forEach{
+                val additionalParameter: Map<String, Any> =
+                    configParams["additionalParameter"] as Map<String, Any>
+                additionalParameter.forEach {
                     hashMap[it.key] = it.value
                 }
             }
             configBuilder.setParams(hashMap)
-            gtCaptcha4Client = GTCaptcha4Client.getClient(context)
-                .init(param["captchaId"] as String, configBuilder.build())
+            gtCaptcha4Client?.init(param["captchaId"] as String, configBuilder.build())
         } else {
-            gtCaptcha4Client = GTCaptcha4Client.getClient(context).init(param["captchaId"] as String)
+            gtCaptcha4Client?.init(param["captchaId"] as String)
         }
 
     }

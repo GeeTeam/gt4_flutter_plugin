@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gt4_flutter_plugin/gt4_flutter_plugin.dart';
+import 'package:gt4_flutter_plugin/gt4_session_configuration.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -27,8 +28,7 @@ class _MyAppState extends State<MyApp> {
   /// TO-DO
   /// 集成前，请先替换从后台申请的 `captchaId`
   /// Before initial new instance, replace `captchaId` sample with one of the captchaId registered from account backend.
-  final Gt4FlutterPlugin captcha =
-      Gt4FlutterPlugin("123456789012345678901234567890ab");
+  late final Gt4FlutterPlugin captcha;
 
   @override
   void initState() {
@@ -38,6 +38,10 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
+    GT4SessionConfiguration config = GT4SessionConfiguration();
+    config.logEnable = false;
+    captcha = Gt4FlutterPlugin("123456789012345678901234567890ab", config);
+
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
