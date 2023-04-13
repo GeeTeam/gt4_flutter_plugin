@@ -44,7 +44,7 @@ dependencies:
 android/libs/*
 
 /** iOS Flutter 插件(iOS Flutter plugin path) */
-ios/Librarie/*
+ios/Libraries/*
 ```
 
 **注：使用`flutter pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到极验行为验 Flutter 插件的对应路径，上述插件路径即为此处。**
