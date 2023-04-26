@@ -1,3 +1,7 @@
+## 0.0.7
+2023-04-26
+* 更新 README.md，添加 README_EN.md
+
 ## 0.0.6
 2023-02-20
 * Add `logEnable` config
