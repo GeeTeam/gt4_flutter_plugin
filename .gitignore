@@ -2,8 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=flutter,xcode,androidstudio,visualstudiocode,android
 
 ### iOS ###
-ios/Libraries/*
-!ios/Libraries/README.md
+#ios/Libraries/*
+#!ios/Libraries/README.md
 
 ### Android ###
 # Built application files
