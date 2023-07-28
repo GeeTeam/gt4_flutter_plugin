@@ -25,28 +25,8 @@ dependencies:
 
 ```yaml
 dependencies:
-  gt4_flutter_plugin: ^0.0.6
+  gt4_flutter_plugin: ^0.0.7
 ```
-
-# 导入 SDK
-
-**注意：请将 SDK 导入到极验行为验 Flutter 插件的对应目录下，而非您项目的目录下**
-
-因为行为验原生 SDK 未提供远程依赖方式获取，需要手动下载和配置。在安装完 Flutter 插件后，需要手动从官网下载 [Android](https://docs.geetest.com/gt4/deploy/client/android#%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E9%9B%86%E6%88%90) 和 [iOS](https://docs.geetest.com/gt4/deploy/client/ios#%E8%8E%B7%E5%8F%96SDK) 的原生 SDK，并手动导入到相应的本地依赖路径：
-
-```bash
-/** Android Flutter 插件(Android Flutter plugin path) */
-android/libs/*
-
-/** iOS Flutter 插件(iOS Flutter plugin path) */
-ios/Librarie/*
-```
-
-**注：使用`flutter pub get`下载插件成功后，Project>External Libraries>Flutter Plugins 中可以找到极验行为验 Flutter 插件的对应路径，上述插件路径即为此处。**
-
-iOS 在插件对应路径导入SDK后，还需要在 Xcode 原生项目中导入资源文件`GTCaptcha4.bundle`, 否则集成后会报资源找不到的错误
-
-Android 在插件对应路径导入SDK后，还需要在插件的 `android/build.gradle` 文件中 `dependencies` 标签内添加 `api(name:'geetest_captcha_android_vx.y.z_date', ext:'aar')`
 
 ## 配置
 
