@@ -51,5 +51,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation(name:'geetest_captcha_android_v1.8.2_20230504', ext:'aar')
+    implementation(name:'geetest_captcha_android_v1.8.2.1_20230710', ext:'aar')
 }
