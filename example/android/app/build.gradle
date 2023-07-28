@@ -45,7 +45,7 @@ android {
 
     defaultConfig {
         applicationId "com.geetest.captcha.flutter.gt4_flutter_plugin_example"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
