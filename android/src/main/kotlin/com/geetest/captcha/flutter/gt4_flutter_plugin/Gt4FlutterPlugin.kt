@@ -45,6 +45,9 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "getPlatformVersion" -> {
                 result.success(GTCaptcha4Client.getVersion())
             }
+            "close" -> {
+                gtCaptcha4Client?.cancel()
+            }
             else -> {
                 result.notImplemented()
             }
