@@ -25,8 +25,12 @@ dependencies:
 
 ```yaml
 dependencies:
-  gt4_flutter_plugin: ^0.0.7
+  gt4_flutter_plugin: ^0.0.9
 ```
+
+## 导入SDK
+
+**注意：插件从 0.0.8 版本开始无需手动导入SDK，但 iOS 因资源引用问题，仍需手动将 `GTCaptcha4.bundle` 拖入 Xcode**
 
 ## 配置
 

@@ -21,9 +21,12 @@ dependencies:
 
 ```
 dependencies:
-  gt4_flutter_plugin: ^0.0.8
+  gt4_flutter_plugin: ^0.0.9
 
 ```
+
+## Import SDK
+**Note: Starting from version 0.0.8, the plugin no longer requires manual import of the SDK. However, for iOS, due to resource reference issues, you still need to manually drag the `GTCaptcha4.bundle` into Xcode.**
 
 ## Configuration
 
