@@ -21,7 +21,7 @@ dependencies:
 
 ```
 dependencies:
-  gt4_flutter_plugin: ^0.0.9
+  gt4_flutter_plugin: ^0.1.0
 
 ```
 
