@@ -53,6 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 取消验证(Cancel verification)
 - (void)cancel;
 
+/// 隐藏GTC4View（Hide GTC4View）
+- (void)setGTC4ViewHidden:(BOOL)isHidden;
+
 /// SDK 版本号(Obtain the SDK version)
 + (NSString *)sdkVersion;
 

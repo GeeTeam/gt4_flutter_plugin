@@ -22,16 +22,6 @@ typedef NS_ENUM(NSInteger, GTC4UserInterfaceStyle) {
     GTC4UserInterfaceStyleDefault = GTC4UserInterfaceStyleLight
 };
 
-/// 验证展示方式(Display style)
-typedef NS_ENUM(NSInteger, GTC4DisplayStyle) {
-    /** 居中展示(Center) */
-    GTC4DisplayStyleCenter = 0,
-    /** 底部展示(Bottom) */
-    GTC4DisplayStyleBottom,
-    /** 默认展示(Default) */
-    GTC4DisplayStyleDefault = GTC4DisplayStyleCenter,
-};
-
 /// 验证会话配置(Captcha session configuration)
 @interface GTCaptcha4SessionConfiguration : NSObject <NSCoding>
 
@@ -51,9 +41,7 @@ typedef NS_ENUM(NSInteger, GTC4DisplayStyle) {
 /// 界面和状态栏样式，默认 `GTC4UserInterfaceStyleLight`。
 /// User interface and statusBar style, which is white by default.
 @property (nonatomic, assign) GTC4UserInterfaceStyle userInterfaceStyle;
-/// 界面的展示方式，默认 `GTC4DisplayStyleCenter`。
-/// The display style, which is centered by default.
-@property (nonatomic, assign) GTC4DisplayStyle displayStyle;
+
 /// 背景颜色，默认透明
 /// Defines color for captcha background. Default is transparent.
 @property (nonatomic, strong) UIColor *backgroundColor;

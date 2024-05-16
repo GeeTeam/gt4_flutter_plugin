@@ -3,10 +3,11 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
-  - gt4_flutter_plugin (0.0.1):
+  - gt4_flutter_plugin (0.0.2):
     - Flutter
-    - GTCaptcha4-iOS
-  - GTCaptcha4-iOS (1.5.0)
+    - gt4_flutter_plugin/Vendor (= 0.0.2)
+  - gt4_flutter_plugin/Vendor (0.0.2):
+    - Flutter
   - Toast (4.0.0)
 
 DEPENDENCIES:
@@ -16,7 +17,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - GTCaptcha4-iOS
     - Toast
 
 EXTERNAL SOURCES:
@@ -28,12 +28,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/gt4_flutter_plugin/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
-  gt4_flutter_plugin: d99fb586c4269253f8ada9ef43cb0a2be1c507c7
-  GTCaptcha4-iOS: ae5f69fe060a09a1aec48f8f953988868c85f14d
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
+  gt4_flutter_plugin: 595705f35f0ae0319afe46584c432bca3775a7f3
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
 PODFILE CHECKSUM: e16eac9ab5ec81ebccaeb5d09cef1eaf8268d7ab
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.15.2

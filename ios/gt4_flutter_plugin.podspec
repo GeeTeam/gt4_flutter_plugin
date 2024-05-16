@@ -20,7 +20,7 @@ A new Flutter plugin.
   # Download SDKs from office website manually and import it to `./Libraries/`
   s.subspec 'Vendor' do |sp|
     sp.resources = "Libraries/*.bundle"
-    sp.vendored_frameworks = 'Libraries/*.framework'
+    sp.vendored_frameworks = 'Libraries/*.xcframework','Libraries/*.framework'
     sp.frameworks = 'WebKit'
   end
 
