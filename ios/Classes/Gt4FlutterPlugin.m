@@ -72,6 +72,18 @@
         if (params[@"additionalParameter"] && [params[@"additionalParameter"] isKindOfClass:[NSDictionary class]]) {
             config.additionalParameter = params[@"additionalParameter"];
         }
+        if (params[@"staticServers"]) {
+            NSArray<NSString *> *staticServers = (NSArray <NSString *>*) params[@"staticServers"];
+            if(staticServers.count > 0) {
+                config.staticServers = staticServers;
+            }
+        }
+        if (params[@"apiServers"]) {
+            NSArray<NSString *> *apiServers = (NSArray <NSString *>*) params[@"apiServers"];
+            if(apiServers.count > 0) {
+                config.apiServers = apiServers;
+            }
+        }
     }
     return config;
 }

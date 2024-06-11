@@ -11,7 +11,7 @@ class Gt4FlutterPlugin {
   static const MethodChannel _channel = MethodChannel('gt4_flutter_plugin');
 
   static String get version {
-    return "0.0.6";
+    return "0.1.1";
   }
 
   static Future<String?> get platformVersion async {
