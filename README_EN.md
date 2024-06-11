@@ -21,7 +21,7 @@ dependencies:
 
 ```
 dependencies:
-  gt4_flutter_plugin: ^0.1.0
+  gt4_flutter_plugin: ^0.1.1
 
 ```
 
@@ -61,6 +61,8 @@ config explanation
 | canceledOnTouchOutside | bool | Interaction when clicking on the background, default is on. |
 | timeout | int | Request timeout duration, in milliseconds, default is 8000 for iOS and 10000 for Android. |
 | language | String | Language. The default is to follow the system. If the current system language is not supported by the plugin, it will be simplified Chinese. For the language short code list (ISO 639-2 standard), please refer to the document for the specified language. |
+| apiServers |   List<String> |  Control the address of API requests |
+| staticServers |   List<String> | Control the address of static resource requests |
 | additionalParameter | Map<String,dynamic> | Additional configuration parameters, default is empty. The parameters will be assembled and submitted to the server. |
 
 ### Verify

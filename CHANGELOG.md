@@ -1,3 +1,7 @@
+## 0.1.1
+2024-06-11
+* GT4SessionConfiguration加入apiServers和staticServers属性
+
 ## 0.1.0
 2024-05-16
 * Android Agp和Gradle版本更新

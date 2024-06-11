@@ -38,6 +38,12 @@ class GT4SessionConfiguration {
   */
   String? language;
 
+  // Static service address, empty by default
+  List<String>? staticServers;
+
+  // Interface service address, default is empty
+  List<String>? apiServers;
+
   // 额外的参数, 默认为空。参数将被组装后提交到验证服务。
   Map<String, dynamic>? additionalParameter;
 
@@ -52,7 +58,9 @@ class GT4SessionConfiguration {
       "canceledOnTouchOutside": canceledOnTouchOutside,
       "timeout": timeout,
       "language": language,
-      "additionalParameter": additionalParameter
+      "additionalParameter": additionalParameter,
+      "staticServers": staticServers,
+      "apiServers": apiServers
     }..removeWhere((key, value) => value == null);
   }
 }

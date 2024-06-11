@@ -25,7 +25,7 @@ dependencies:
 
 ```yaml
 dependencies:
-  gt4_flutter_plugin: ^0.1.0
+  gt4_flutter_plugin: ^0.1.1
 ```
 
 ## 导入SDK
@@ -48,8 +48,7 @@ var config = GT4SessionConfiguration();
     config.language = "en";
     config.debugEnable = true;
     config.backgroundColor = Colors.orange;
-    captcha =
-        Gt4FlutterPlugin("123456789012345678901234567890ab",config);
+    captcha = Gt4FlutterPlugin("123456789012345678901234567890ab",config);
 ```
 
 config 说明
@@ -64,6 +63,8 @@ config 说明
 | canceledOnTouchOutside | bool | 点击背景的交互，默认开启 |
 | timeout | int | 请求超时时长，单位为毫秒，iOS 默认8000，Android 默认 10000 |
 | language | String | 语言。默认跟随系统，如果当前系统语言为插件不支持的语言，则为中文简体指定语言请参考文档中的语言短码清单（ISO 639-2 标准） |
+| apiServers |   List<String> |  控制api请求的地址 |
+| staticServers |   List<String> | 控制静态资源请求的地址 |
 | additionalParameter | Map<String,dynamic> | 额外的配置参数，默认为空。参数将被组装后提交到服务端。 |
 
 ### Verify

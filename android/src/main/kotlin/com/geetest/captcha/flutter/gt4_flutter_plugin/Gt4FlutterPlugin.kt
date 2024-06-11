@@ -13,6 +13,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import org.json.JSONArray
 import org.json.JSONObject
 
 /** Gt4FlutterPlugin */
@@ -101,11 +102,20 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             if (configParams.containsKey("language")) {
                 configBuilder.setLanguage(configParams["language"] as String)
             }
+            if (configParams.containsKey("staticServers")) {
+                val staticServers =configParams["staticServers"] as ArrayList<String>
+                configBuilder.setStaticServers(staticServers.toTypedArray())
+            }
+            if (configParams.containsKey("apiServers")) {
+                val apiServers =configParams["apiServers"] as ArrayList<String>
+                configBuilder.setApiServers(apiServers.toTypedArray())
+            }
             if (configParams.containsKey("additionalParameter")) {
                 val additionalParameter: Map<String, Any> =
                     configParams["additionalParameter"] as Map<String, Any>
                 additionalParameter.forEach {
-                    hashMap[it.key] = it.value
+                    hashMap[it.key] =
+                        if (it.value is ArrayList<*>) JSONArray(it.value as ArrayList<*>) else it.value
                 }
             }
             configBuilder.setParams(hashMap)
