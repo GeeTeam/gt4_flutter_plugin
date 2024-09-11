@@ -29,6 +29,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 33
+    namespace 'com.geetest.captcha.flutter.gt4_flutter_plugin'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
