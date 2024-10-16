@@ -84,6 +84,19 @@
                 config.apiServers = apiServers;
             }
         }
+        if (@available(iOS 11.0, *)) {
+            if (params[@"proxy"]) {
+                if ([[GTCaptcha4Session sdkVersion] compare:@"1.8.9"] == NSOrderedAscending) {
+                    NSLog(@"The SDK version is required to be 1.8.9 or above for 'proxy' config");
+                } else {
+                    NSDictionary *proxyDict = params[@"proxy"];
+                    NSString *host = proxyDict[@"host"];
+                    NSNumber *port = [NSNumber numberWithInteger:[proxyDict[@"port"] integerValue]];
+                    config.proxy = [[GTCaptcha4Proxy alloc] initWithHost:host port:port];
+                }
+                
+            }
+        }
     }
     return config;
 }

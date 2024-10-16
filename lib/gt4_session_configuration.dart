@@ -5,7 +5,7 @@ import 'gt4_enum.dart';
 class GT4SessionConfiguration {
   /*
   静态资源文件的路径, 默认为空。
-  如果为远程文件，则应为完成路径。
+  如果为远程文件，则应为完整路径。
   如果为本地文件，则应为文件所在路径（不包含文件）。
    */
   String? resourcePath;
@@ -44,6 +44,9 @@ class GT4SessionConfiguration {
   // Interface service address, default is empty
   List<String>? apiServers;
 
+  // network proxy，the SDK version is required to be above 1.8.9
+  GTCaptcha4Proxy? proxy;
+
   // 额外的参数, 默认为空。参数将被组装后提交到验证服务。
   Map<String, dynamic>? additionalParameter;
 
@@ -60,7 +63,20 @@ class GT4SessionConfiguration {
       "language": language,
       "additionalParameter": additionalParameter,
       "staticServers": staticServers,
-      "apiServers": apiServers
+      "apiServers": apiServers,
+      "proxy": proxy?.toMap()
     }..removeWhere((key, value) => value == null);
+  }
+}
+
+class GTCaptcha4Proxy {
+  String host;
+  int port;
+  GTCaptcha4Proxy({required this.host,required this.port});
+  Map<String, dynamic> toMap() {
+    return {
+      "host":host,
+      "port":port
+    };
   }
 }
