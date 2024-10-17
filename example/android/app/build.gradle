@@ -26,9 +26,9 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
-
-    ndkVersion '21.4.7075529'
+    namespace = "com.geetest.captcha.flutter.gt4_flutter_plugin_example"
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,11 +44,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.geetest.captcha.flutter.gt4_flutter_plugin_example"
-        minSdkVersion 21
-        targetSdkVersion 33
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        applicationId = "com.geetest.captcha.flutter.gt4_flutter_plugin_example"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
     }
 
     buildTypes {
@@ -59,6 +59,17 @@ android {
         }
     }
 }
+
+//subprojects {
+//    afterEvaluate { project ->
+//        println("$project hit")
+//        if (project.group == "com.example.FlutterToast" && project.hasProperty('android')) {
+//            println 'com.example.FlutterToast hit'
+//            project.android.compileSdk = 34
+//            project.android.defaultConfig.targetSdk = 34
+//        }
+//    }
+//}
 
 flutter {
     source '../..'
