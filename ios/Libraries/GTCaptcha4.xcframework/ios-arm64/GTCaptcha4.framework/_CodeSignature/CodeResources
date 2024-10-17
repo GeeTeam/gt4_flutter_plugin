@@ -10,19 +10,23 @@
 		</data>
 		<key>Headers/GTCaptcha4.h</key>
 		<data>
-		E8+HP6efVWb1ZVBOuOTvAZeG+14=
+		jewEUzBuY2CI9+reIEiBSmg78XE=
+		</data>
+		<key>Headers/GTCaptcha4Proxy.h</key>
+		<data>
+		1A9hqkvo/uogpQzrv+AoMZbVMiU=
 		</data>
 		<key>Headers/GTCaptcha4Session.h</key>
 		<data>
-		EAwjlmVD6+xdOK2mM/+AMDp8/Yw=
+		AckrEY1bCmRTWASw3HA2Rvz3mmI=
 		</data>
 		<key>Headers/GTCaptcha4SessionConfiguration.h</key>
 		<data>
-		rAz0dDuSpmDFFm0BVEhALRIFVuA=
+		ngm02URUyWMeb73eARrNkp2qF3U=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ym4MXBssvwhTzEfvTBCt8221rG0=
+		PGLl4Nqk6sBsLfC0l6cjAhhzSgk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -46,33 +50,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			E8+HP6efVWb1ZVBOuOTvAZeG+14=
+			jewEUzBuY2CI9+reIEiBSmg78XE=
 			</data>
 			<key>hash2</key>
 			<data>
-			npzMsgettIKz79Yrq9tfzUbX4o3pAXUpItDFlpVJIj8=
+			hBsToy2pYPHXWqjNz/Qeg1j1Uwia8+k0gHAcqkMAjwk=
+			</data>
+		</dict>
+		<key>Headers/GTCaptcha4Proxy.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1A9hqkvo/uogpQzrv+AoMZbVMiU=
+			</data>
+			<key>hash2</key>
+			<data>
+			2EF2leM+oFzEU8D++TxvRJRUN7K/rZSzHVvbb6pyQU0=
 			</data>
 		</dict>
 		<key>Headers/GTCaptcha4Session.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EAwjlmVD6+xdOK2mM/+AMDp8/Yw=
+			AckrEY1bCmRTWASw3HA2Rvz3mmI=
 			</data>
 			<key>hash2</key>
 			<data>
-			xeh6FtHD3VvPTKpPcjmImVn+Oxumhrs+3Yw67zQJLM0=
+			Yng5dxknQUTPMrdY/uQhR/7fBHgvtAv1ZOVLl+oRtTw=
 			</data>
 		</dict>
 		<key>Headers/GTCaptcha4SessionConfiguration.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rAz0dDuSpmDFFm0BVEhALRIFVuA=
+			ngm02URUyWMeb73eARrNkp2qF3U=
 			</data>
 			<key>hash2</key>
 			<data>
-			TPsmzbFSGYm9RCxyvxgApBdZuxKUyZmm5S5/Q+wck3w=
+			MHdnrVq65ryCmempPYGL2rMEYaukU2dmqv+33fnyK2k=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

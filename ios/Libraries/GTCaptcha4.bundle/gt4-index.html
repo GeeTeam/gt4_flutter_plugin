@@ -70,7 +70,7 @@
         var debug = false;
         var logEle = document.getElementById('log');
         var isOffline = false;
-        var indexVersion = '1.3.4'; // 中间页版本号，每次修改文件要进行版本号升级
+        var indexVersion = '1.3.5'; // 中间页版本号，每次修改文件要进行版本号升级
         function log(str) {
             if (!debug) {
                 return;
@@ -232,7 +232,7 @@
                 product: 'bind',
                 onError: function (e) {
                     // 错误信息中插入版本号
-                    e.desc = Object.assign({}, e.desc, { indexVersion: indexVersion });
+                    e.desc = Object.assign({}, {desc: e.desc}, { indexVersion: indexVersion });
                     jsBridge.callNative({
                         type: 'error',
                         data: e
