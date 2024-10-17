@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import androidx.annotation.NonNull
 import com.geetest.captcha.GTCaptcha4Client
 import com.geetest.captcha.GTCaptcha4Config
+import com.geetest.captcha.GTCaptcha4Proxy
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -27,35 +28,40 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private var gtCaptcha4Client: GTCaptcha4Client? = null
     private val tag = "| Geetest | Android | "
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "gt4_flutter_plugin")
         channel.setMethodCallHandler(this)
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "initWithCaptcha" -> {
                 initWithCaptcha(activity!!, call.arguments)
             }
+
             "verify" -> {
                 verifyWithCaptcha()
             }
+
             "configurationChanged" -> {
                 configurationChanged(Configuration())
             }
+
             "getPlatformVersion" -> {
                 result.success(GTCaptcha4Client.getVersion())
             }
+
             "close" -> {
                 gtCaptcha4Client?.cancel()
             }
+
             else -> {
                 result.notImplemented()
             }
         }
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 
@@ -103,11 +109,11 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 configBuilder.setLanguage(configParams["language"] as String)
             }
             if (configParams.containsKey("staticServers")) {
-                val staticServers =configParams["staticServers"] as ArrayList<String>
+                val staticServers = configParams["staticServers"] as ArrayList<String>
                 configBuilder.setStaticServers(staticServers.toTypedArray())
             }
             if (configParams.containsKey("apiServers")) {
-                val apiServers =configParams["apiServers"] as ArrayList<String>
+                val apiServers = configParams["apiServers"] as ArrayList<String>
                 configBuilder.setApiServers(apiServers.toTypedArray())
             }
             if (configParams.containsKey("additionalParameter")) {
@@ -119,6 +125,23 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
             }
             configBuilder.setParams(hashMap)
+            if (configParams.containsKey("proxy")) {
+                val proxy: Map<String, Any> = configParams["proxy"] as Map<String, Any>
+                val host: String? = if (proxy.containsKey("host") && proxy["host"] is String) {
+                    proxy["host"] as? String
+                } else {
+                    null
+                }
+                val port: Int? = if (proxy.containsKey("port") && proxy["port"] is Int) {
+                    proxy["port"] as? Int
+                } else {
+                    null
+                }
+                if (host != null && port != null) {
+                    val proxyConfig = GTCaptcha4Proxy(host, port)
+                    configBuilder.setHttpProxyServer(proxyConfig)
+                }
+            }
             gtCaptcha4Client?.init(param["captchaId"] as String, configBuilder.build())
         } else {
             gtCaptcha4Client?.init(param["captchaId"] as String)

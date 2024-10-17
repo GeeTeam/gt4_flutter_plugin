@@ -60,17 +60,6 @@ android {
     }
 }
 
-//subprojects {
-//    afterEvaluate { project ->
-//        println("$project hit")
-//        if (project.group == "com.example.FlutterToast" && project.hasProperty('android')) {
-//            println 'com.example.FlutterToast hit'
-//            project.android.compileSdk = 34
-//            project.android.defaultConfig.targetSdk = 34
-//        }
-//    }
-//}
-
 flutter {
     source '../..'
 }
