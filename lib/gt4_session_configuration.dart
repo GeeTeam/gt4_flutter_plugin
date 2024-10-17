@@ -72,8 +72,11 @@ class GT4SessionConfiguration {
 class GTCaptcha4Proxy {
   String host;
   int port;
-  GTCaptcha4Proxy({required this.host, required this.port});
+  GTCaptcha4Proxy({required this.host,required this.port});
   Map<String, dynamic> toMap() {
-    return {"host": host, "port": port};
+    return {
+      "host":host,
+      "port":port
+    };
   }
 }

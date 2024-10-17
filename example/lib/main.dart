@@ -171,14 +171,14 @@ class _MyAppState extends State<MyApp> {
               TextButton(
                   style: ButtonStyle(
                     foregroundColor:
-                        WidgetStateProperty.all<Color>(Colors.blue),
-                    overlayColor: WidgetStateProperty.resolveWith<Color?>(
-                      (Set<WidgetState> states) {
-                        if (states.contains(WidgetState.hovered)) {
+                        MaterialStateProperty.all<Color>(Colors.blue),
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.hovered)) {
                           return Colors.blue.withOpacity(0.04);
                         }
-                        if (states.contains(WidgetState.focused) ||
-                            states.contains(WidgetState.pressed)) {
+                        if (states.contains(MaterialState.focused) ||
+                            states.contains(MaterialState.pressed)) {
                           return Colors.blue.withOpacity(0.12);
                         }
                         return null; // Defer to the widget's default.
