@@ -25,9 +25,6 @@ dependencies:
 
 ```
 
-## Import SDK
-**Note: Starting from version 0.0.8, the plugin no longer requires manual import of the SDK. However, for iOS, due to resource reference issues, you still need to manually drag the `GTCaptcha4.bundle` into Xcode.**
-
 ## Configuration
 
 Please apply for the verification ID (captchaId) and key on the [official website](https://www.geetest.com/) and deploy the matching backend interface. For detailed instructions, please refer to: [Deployment Instructions](https://docs.geetest.com/gt4/start/)

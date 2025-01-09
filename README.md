@@ -28,10 +28,6 @@ dependencies:
   gt4_flutter_plugin: ^0.1.2
 ```
 
-## 导入SDK
-
-**注意：插件从 0.0.8 版本开始无需手动导入SDK，但 iOS 因资源引用问题，仍需手动将 `GTCaptcha4.bundle` 拖入 Xcode**
-
 ## 配置
 
 请在 [官网](https://www.geetest.com/) 申请验证 ID（captchaId）和 Key，并部署配套的后端接口。详细介绍请查阅：[部署说明](https://docs.geetest.com/gt4/start/)
