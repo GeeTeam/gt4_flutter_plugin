@@ -16,6 +16,7 @@ A new Flutter plugin.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
+  s.static_framework = true
 
   # Download SDKs from office website manually and import it to `./Libraries/`
   s.subspec 'Vendor' do |sp|
