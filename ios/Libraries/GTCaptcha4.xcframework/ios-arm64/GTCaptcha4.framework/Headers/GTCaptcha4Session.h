@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 调整 present 方式的视图位于验证码窗口之后(Adjust the view of the present format behind the verification window)
 - (void)adjustPresentControllerBehind:(BOOL)isBehind;
 
-/// 调整窗口层级（Adjust window level）
+/// 调整窗口层级（adjust window level）
 - (void)adjustWindowLevel:(double)windowLevel;
 
 /// SDK 版本号(Obtain the SDK version)

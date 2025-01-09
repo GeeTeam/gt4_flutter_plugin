@@ -17,5 +17,5 @@ FOUNDATION_EXPORT const unsigned char GTCaptcha4VersionString[];
 #import <GTCaptcha4/GTCaptcha4Session.h>
 #import <GTCaptcha4/GTCaptcha4SessionConfiguration.h>
 #import <GTCaptcha4/GTC4Error.h>
-#import <GTCaptcha4/GTCaptcha4Proxy.h>
+
 

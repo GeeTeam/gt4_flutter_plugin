@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class GTCaptcha4Proxy;
 /// 验证界面样式(User interface style)
 typedef NS_ENUM(NSInteger, GTC4UserInterfaceStyle) {
     /** 跟随系统样式(Follow system) */
@@ -74,10 +73,6 @@ typedef NS_ENUM(NSInteger, GTC4UserInterfaceStyle) {
 /// Additional parameter, which is empty by default.
 /// Parameters will be assembled and submitted to the captcha server.
 @property (nullable, nonatomic, strong) NSMutableDictionary *additionalParameter;
-
-/// 网络代理
-/// network proxy
-@property (nullable, strong, nonatomic) GTCaptcha4Proxy *proxy API_AVAILABLE(ios(11.0));
 
 /// 获得一个默认配置
 /// Get a default configuration.
