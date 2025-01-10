@@ -84,14 +84,6 @@
                 config.apiServers = apiServers;
             }
         }
-        if (@available(iOS 11.0, *)) {
-            if (params[@"proxy"]) {
-                NSDictionary *proxyDict = params[@"proxy"];
-                NSString *host = proxyDict[@"host"];
-                NSNumber *port = [NSNumber numberWithInteger:[proxyDict[@"port"] integerValue]];
-                config.proxy = [[GTCaptcha4Proxy alloc] initWithHost:host port:port];
-            }
-        }
     }
     return config;
 }
