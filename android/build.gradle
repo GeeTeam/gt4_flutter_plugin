@@ -41,5 +41,5 @@ android {
 }
 
 dependencies {
-    implementation(name:'geetest_captcha_android_v1.8.9_20241017', ext:'aar')
+    implementation(name:'geetest_captcha_android_v1.8.8_20250110', ext:'aar')
 }
