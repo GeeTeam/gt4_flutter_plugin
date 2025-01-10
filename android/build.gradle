@@ -17,7 +17,6 @@ rootProject.allprojects {
 }
 
 android {
-    namespace = "com.geetest.captcha.flutter.gt4_flutter_plugin"
     compileSdk = 34
     buildToolsVersion = "34.0.0"
 
@@ -37,6 +36,9 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 34
+        if (project.android.hasProperty('namespace')) {
+            namespace = "com.geetest.captcha.flutter.gt4_flutter_plugin"
+        }
     }
 }
 
