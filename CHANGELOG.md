@@ -1,7 +1,9 @@
 ## 0.1.2
 2025-01-09
-* 1.更新 iOS 原生 SDK 为 1.8.8 版本
-* 2.修改 iOS 原生依赖为静态链接，解决需手动导入资源包的问题 
+* Android GTCaptcha4 Android SDK 1.8.8
+* Android: AGP 7.2.2, Gradle 7.6.4, support namespace in build.gradle android block, fix build on AGP 8+
+* iOS: GTCaptcha4 iOS SDK 1.8.8
+* iOS: pod dependency is now statically linked, bundle is now automatically imported 
 
 ## 0.1.1
 2024-06-11
