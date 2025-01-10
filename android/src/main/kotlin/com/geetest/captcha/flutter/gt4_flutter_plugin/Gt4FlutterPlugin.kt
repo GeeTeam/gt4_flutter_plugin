@@ -3,10 +3,8 @@ package com.geetest.captcha.flutter.gt4_flutter_plugin
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import androidx.annotation.NonNull
 import com.geetest.captcha.GTCaptcha4Client
 import com.geetest.captcha.GTCaptcha4Config
-import com.geetest.captcha.GTCaptcha4Proxy
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -125,23 +123,23 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
             }
             configBuilder.setParams(hashMap)
-            if (configParams.containsKey("proxy")) {
-                val proxy: Map<String, Any> = configParams["proxy"] as Map<String, Any>
-                val host: String? = if (proxy.containsKey("host") && proxy["host"] is String) {
-                    proxy["host"] as? String
-                } else {
-                    null
-                }
-                val port: Int? = if (proxy.containsKey("port") && proxy["port"] is Int) {
-                    proxy["port"] as? Int
-                } else {
-                    null
-                }
-                if (host != null && port != null) {
-                    val proxyConfig = GTCaptcha4Proxy(host, port)
-                    configBuilder.setHttpProxyServer(proxyConfig)
-                }
-            }
+//            if (configParams.containsKey("proxy")) {
+//                val proxy: Map<String, Any> = configParams["proxy"] as Map<String, Any>
+//                val host: String? = if (proxy.containsKey("host") && proxy["host"] is String) {
+//                    proxy["host"] as? String
+//                } else {
+//                    null
+//                }
+//                val port: Int? = if (proxy.containsKey("port") && proxy["port"] is Int) {
+//                    proxy["port"] as? Int
+//                } else {
+//                    null
+//                }
+//                if (host != null && port != null) {
+//                    val proxyConfig = GTCaptcha4Proxy(host, port)
+//                    configBuilder.setHttpProxyServer(proxyConfig)
+//                }
+//            }
             gtCaptcha4Client?.init(param["captchaId"] as String, configBuilder.build())
         } else {
             gtCaptcha4Client?.init(param["captchaId"] as String)
