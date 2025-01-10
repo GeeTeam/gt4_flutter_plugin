@@ -44,9 +44,6 @@ class GT4SessionConfiguration {
   // Interface service address, default is empty
   List<String>? apiServers;
 
-  // network proxy，the SDK version is required to be above 1.8.9
-  GTCaptcha4Proxy? proxy;
-
   // 额外的参数, 默认为空。参数将被组装后提交到验证服务。
   Map<String, dynamic>? additionalParameter;
 
@@ -64,16 +61,6 @@ class GT4SessionConfiguration {
       "additionalParameter": additionalParameter,
       "staticServers": staticServers,
       "apiServers": apiServers,
-      "proxy": proxy?.toMap()
     }..removeWhere((key, value) => value == null);
-  }
-}
-
-class GTCaptcha4Proxy {
-  String host;
-  int port;
-  GTCaptcha4Proxy({required this.host, required this.port});
-  Map<String, dynamic> toMap() {
-    return {"host": host, "port": port};
   }
 }
