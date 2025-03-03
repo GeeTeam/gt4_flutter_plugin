@@ -1,6 +1,6 @@
 name: gt4_flutter_plugin
 description: The official flutter plugin project for GeeTest Captcha v4. Supports Flutter 3.0.
-version: 0.1.2
+version: 0.1.4
 homepage: https://www.geetest.com
 repository: https://github.com/GeeTeam/gt4_flutter_plugin
 

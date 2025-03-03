@@ -1,3 +1,8 @@
+## 0.1.4
+2025-03-03
+
+* Fix ios podspec description; include arm64 on iOS Simulator
+
 ## 0.1.2
 2025-01-09
 * Android GTCaptcha4 Android SDK 1.8.8
