@@ -181,6 +181,9 @@ class Gt4FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     )
                 )
             }
+            ?.addOnWebViewShowListener {
+                channel.invokeMethod("onShow", hashMapOf("show" to "1"))
+            }
             ?.verifyWithCaptcha()
     }
 
