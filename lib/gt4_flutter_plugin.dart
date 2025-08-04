@@ -66,12 +66,12 @@ class Gt4FlutterPlugin {
   void addEventHandler({
     /// 验证完成，可能成功或者错误
     /// 成功结构示例:
-    /// {response: {"lot_number":"5df5c616d4aa49aa82d44aceb6c76264",
+    /// {result: {"lot_number":"5df5c616d4aa49aa82d44aceb6c76264",
     /// "pass_token":"282282c00077c1cc11d8b4b29e361fcfb3421916220ed9bf253803711b98f1ef",
-    /// "gen_time":"1636015810","captcha_output":"1X_RK3ag_IKlW15iHhSywQ=="}, state: true}
+    /// "gen_time":"1636015810","captcha_output":"1X_RK3ag_IKlW15iHhSywQ=="}, status: "1"}
     /// 失败结构示例:
-    /// {response: {"captchaId":"647f5ed2ed8acb4be36784e01556bb71","captchaType":"slide",
-    /// "challenge":"d04423f3-5297-44f5-bafa-cb868095c605"}, state: false}
+    /// {result: {"captchaId":"647f5ed2ed8acb4be36784e01556bb71","captchaType":"slide",
+    /// "challenge":"d04423f3-5297-44f5-bafa-cb868095c605"}, status: "0"}
     EventHandler? onResult,
 
     /// 错误回调
