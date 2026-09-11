@@ -51,17 +51,22 @@
         if (params[@"protocol"]) {
             config.protocol = params[@"protocol"];
         }
-        if (params[@"userInterfaceStyle"] && [params[@"userInterfaceStyle"] integerValue]) {
-            config.userInterfaceStyle = [params[@"userInterfaceStyle"] integerValue];
+        NSNumber *userInterfaceStyle = params[@"userInterfaceStyle"];
+        if ([userInterfaceStyle isKindOfClass:[NSNumber class]]) {
+          config.userInterfaceStyle =
+              (GTC4UserInterfaceStyle)userInterfaceStyle.integerValue;
         }
         if (params[@"backgroundColor"]) {
             config.backgroundColor = [self colorWithHex:params[@"backgroundColor"]];
         }
-        if (params[@"debugEnable"] && [params[@"debugEnable"] boolValue]) {
-            config.debugEnable = [params[@"debugEnable"] boolValue];
+        NSNumber *debugEnable = params[@"debugEnable"];
+        if ([debugEnable isKindOfClass:[NSNumber class]]) {
+          config.debugEnable = debugEnable.boolValue;
         }
-        if (params[@"canceledOnTouchOutside"] && [params[@"canceledOnTouchOutside"] boolValue]) {
-            config.backgroundUserInteractionEnable = [params[@"canceledOnTouchOutside"] boolValue];
+        NSNumber *canceledOnTouchOutside = params[@"canceledOnTouchOutside"];
+        if ([canceledOnTouchOutside isKindOfClass:[NSNumber class]]) {
+          config.backgroundUserInteractionEnable =
+              canceledOnTouchOutside.boolValue;
         }
         if (params[@"timeout"] && [params[@"timeout"] integerValue]) {
             config.timeout = [params[@"timeout"] integerValue] / 1000;
