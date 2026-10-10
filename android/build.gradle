@@ -1,6 +1,16 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+}
+
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+// AGP 9 enables built-in Kotlin and no longer allows library subprojects to apply
+// the Kotlin Gradle Plugin (KGP). Apply KGP ourselves whenever built-in Kotlin is
+// not in effect; the pluginManager form keeps Flutter's static KGP detection from
+// flagging this plugin. See
+// https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+def builtInKotlinEnabled = project.findProperty('android.builtInKotlin')?.toString()?.toBoolean() ?: (agpMajor >= 9)
+if (agpMajor < 9 || !builtInKotlinEnabled) {
+    pluginManager.apply('org.jetbrains.kotlin.android')
 }
 
 group 'com.geetest.captcha.flutter.gt4_flutter_plugin'
@@ -25,8 +35,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    if (!builtInKotlinEnabled) {
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8.toString()
+        }
     }
 
     sourceSets {
@@ -44,4 +56,12 @@ android {
 
 dependencies {
     implementation(name:'geetest_captcha_android_v1.8.9_20250529', ext:'aar')
+}
+
+if (builtInKotlinEnabled) {
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+        }
+    }
 }
